@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "00496776-58c8-4bb6-a8c5-271845f3d6aa",
+		"name": "Factura-back",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30653733"
+	},
+	"item": [
+		{
+			"name": "invoise",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8081/invoice"
+			},
+			"response": []
+		},
+		{
+			"name": "invoise",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"INV-012\",\r\n    \"createAt\": \"2023-12-07\",\r\n    \"total\": 310.75,\r\n    \"clientId\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/invoice"
+			},
+			"response": []
+		},
+		{
+			"name": "invoise",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"12\",\r\n    \"code\": \"INV-016\",\r\n    \"createAt\": \"2023-12-17\",\r\n    \"total\": 310.75,\r\n    \"clientId\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/invoice"
+			},
+			"response": []
+		},
+		{
+			"name": "invoise",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"12\",\r\n    \"code\": \"INV-016\",\r\n    \"createAt\": \"2023-12-17\",\r\n    \"total\": 310.75,\r\n    \"clientId\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/invoice"
+			},
+			"response": []
+		},
+		{
+			"name": "invoise",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8081/invoice/delete/12"
+			},
+			"response": []
+		},
+		{
+			"name": "detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8081/detail"
+			},
+			"response": []
+		},
+		{
+			"name": "detail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 52,\r\n    \"price\": 21.00,\r\n    \"invoiceId\": 14,\r\n    \"productId\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/detail"
+			},
+			"response": []
+		},
+		{
+			"name": "detail",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"2\",\r\n    \"quantity\": 52,\r\n    \"price\": 21.00,\r\n    \"invoiceId\": 14,\r\n    \"productId\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/detail"
+			},
+			"response": []
+		},
+		{
+			"name": "detail",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"2\",\r\n    \"quantity\": 52,\r\n    \"price\": 21.00,\r\n    \"invoiceId\": 14,\r\n    \"productId\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/detail"
+			},
+			"response": []
+		},
+		{
+			"name": "detail",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8081/detail/delete/2"
+			},
+			"response": []
+		},
+		{
+			"name": "product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8081/product"
+			},
+			"response": []
+		},
+		{
+			"name": "product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"External Hard Drive\",\r\n      \"brand\": \"Acme\",\r\n      \"price\": 129.00,\r\n      \"stock\": 90\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/product"
+			},
+			"response": []
+		},
+		{
+			"name": "product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"2\",\r\n    \"description\": \"External Hard Drive\",\r\n      \"brand\": \"Acme\",\r\n      \"price\": 129.00,\r\n      \"stock\": 90\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/product"
+			},
+			"response": []
+		},
+		{
+			"name": "product",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"2\",\r\n    \"description\": \"External Hard Drive\",\r\n      \"brand\": \"Acme\",\r\n      \"price\": 130.00,\r\n      \"stock\": 90\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/product"
+			},
+			"response": []
+		},
+		{
+			"name": "product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8081/product/delete/2"
+			},
+			"response": []
+		},
+		{
+			"name": "client",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8081/client"
+			},
+			"response": []
+		},
+		{
+			"name": "client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nui\": \"2221110009996\",\r\n      \"fullname\": \"Ava Martinez\",\r\n      \"address\": \"Chordeleg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/client"
+			},
+			"response": []
+		},
+		{
+			"name": "client",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"9\",\r\n    \"nui\": \"2221110009996\",\r\n      \"fullname\": \"Ava Martinez\",\r\n      \"address\": \"Cuenca\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/client"
+			},
+			"response": []
+		},
+		{
+			"name": "client",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"9\",\r\n    \"nui\": \"2221110009996\",\r\n      \"fullname\": \"Eva Martinez\",\r\n      \"address\": \"Cuenca\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8081/client"
+			},
+			"response": []
+		},
+		{
+			"name": "client",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8081/client/delete/1"
+			},
+			"response": []
+		}
+	]
+}

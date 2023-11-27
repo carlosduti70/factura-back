@@ -3,6 +3,8 @@ package com.CarlosZ.factura.service
 import com.CarlosZ.factura.model.Detail
 import com.CarlosZ.factura.repository.ClientRepository
 import com.CarlosZ.factura.repository.DetailRepository
+import com.CarlosZ.factura.repository.InvoiceRepository
+import com.CarlosZ.factura.repository.ProductRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
@@ -11,7 +13,9 @@ import org.springframework.web.server.ResponseStatusException
 @Service
 class detailService {
     @Autowired
-    lateinit var clientRepository: ClientRepository
+    lateinit var invoiceRepository: InvoiceRepository
+    @Autowired
+    lateinit var productRepository: ProductRepository
     @Autowired
     lateinit var detailRepository: DetailRepository
 
@@ -21,8 +25,10 @@ class detailService {
 
     fun save(detail: Detail):Detail{
         try {
-            clientRepository.findById(detail.invoiceId)
-                ?: throw Exception("Id del cliente no encontrados")
+            invoiceRepository.findById(detail.invoiceId)
+                ?: throw Exception("Id de factura no encontrado")
+            productRepository.findById(detail.productId)
+                ?: throw Exception("Id de producto no encontrado")
             return detailRepository.save(detail)
         }catch (ex : Exception){
             throw ResponseStatusException(

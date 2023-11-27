@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "product")
@@ -16,6 +17,6 @@ class Product {
     var id: Long? = null
     var description: String? = null
     var brand: String?= null
-    var price: Number?= null
-    var stock: Number?= null
+    var price: BigDecimal?= null
+    var stock: Int?= null
 }
