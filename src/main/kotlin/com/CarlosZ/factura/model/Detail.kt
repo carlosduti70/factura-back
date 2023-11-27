@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 import java.math.BigDecimal
+import java.text.DecimalFormat
 
 @Entity
 @Table(name= "detail")
@@ -16,7 +17,7 @@ class Detail {
     @Column(updatable = false)
     var id: Long? = null
     var quantity: Int? = null
-    var price: BigDecimal?= null
+    var price: DecimalFormat?= null
     @Column(name= "invoice_id")
     var invoiceId: Long?= null
     @Column(name= "product_id")

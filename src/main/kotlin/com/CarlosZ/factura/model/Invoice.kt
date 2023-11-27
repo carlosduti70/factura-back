@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 import java.math.BigDecimal
+import java.text.DecimalFormat
 import java.util.Date
 
 @Entity
@@ -19,7 +20,7 @@ class Invoice {
     var code: String? = null
     @Column(name="create_at")
     var createAt: Date? = null
-    var total: BigDecimal?= null
+    var total: Double?= null
     @Column(name="client_id")
     var clientId: Long? = null
 }
