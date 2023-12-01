@@ -18,7 +18,19 @@ class invoiceService {
     fun list ():List<Invoice>{
         return invoiceRepository.findAll()
     }
+//-----------------------------------------------------------------------------
+    fun listByTotal(value: Double): List<Invoice>{
+        return invoiceRepository.filterTotal(value)
+    }
 
+    fun listBybestSellers(value: Double): List<Invoice>{
+        return invoiceRepository.bestSellers(value)
+    }
+
+    fun listBybigInvoice(value: Double): List<Invoice>{
+        return invoiceRepository.bigInvoice(value)
+    }
+//---------------------------------------------------------------------------
     fun save(invoice: Invoice):Invoice{
         try {
             clientRepository.findById(invoice.clientId)

@@ -1,8 +1,13 @@
 package com.CarlosZ.factura.controller
 
+import com.CarlosZ.factura.model.Client
 import com.CarlosZ.factura.model.Product
 import com.CarlosZ.factura.service.productService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Example
+import org.springframework.data.domain.ExampleMatcher
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -14,9 +19,11 @@ class ProductController {
     lateinit var productService: productService
 
     @GetMapping
-    fun list ():List <Product>{
-        return productService.list()
+    fun list (product: Product, pageable:Pageable):ResponseEntity <*>{
+        val response= productService.list(pageable,product)
+        return ResponseEntity(response, HttpStatus.OK)
     }
+
 
     @PostMapping
     fun save (@RequestBody product: Product):ResponseEntity<Product>{

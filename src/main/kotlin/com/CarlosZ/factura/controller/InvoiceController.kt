@@ -43,4 +43,20 @@ class InvoiceController {
     fun delete (@PathVariable("id") id: Long):Boolean?{
         return invoiceService.delete(id)
     }
+
+//------------------------------------------------------------------------------
+    @GetMapping("/filter-total/{value}")
+    fun listTotals (@PathVariable("value") value: Double ):ResponseEntity<*>{
+        return ResponseEntity(invoiceService.listByTotal(value), HttpStatus.OK)
+    }
+
+    @GetMapping("/filter-best/{value}")
+    fun listBestSellers (@PathVariable("value") value: Double ):ResponseEntity<*>{
+        return ResponseEntity(invoiceService.listBybestSellers(value), HttpStatus.OK)
+    }
+
+    @GetMapping("/filter-big/{value}")
+    fun listBigInvoice (@PathVariable("value") value: Double ):ResponseEntity<*>{
+        return ResponseEntity(invoiceService.listBybigInvoice(value), HttpStatus.OK)
+    }
 }

@@ -3,9 +3,11 @@ package com.CarlosZ.factura.controller
 import com.CarlosZ.factura.model.Client
 import com.CarlosZ.factura.service.clientService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+
 
 @RestController
 @RequestMapping("/client")
@@ -14,8 +16,9 @@ class ClientController {
     lateinit var clientService: clientService
 
     @GetMapping
-    fun list ():List <Client>{
-        return clientService.list()
+    fun list (client: Client, pageable:Pageable):ResponseEntity <*>{
+        val response= clientService.list(pageable,client)
+        return ResponseEntity(response, HttpStatus.OK)
     }
 
     @PostMapping
