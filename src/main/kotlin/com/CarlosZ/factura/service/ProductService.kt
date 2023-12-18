@@ -1,5 +1,7 @@
 package com.CarlosZ.factura.service
 
+import com.CarlosZ.factura.dto.ProductDto
+import com.CarlosZ.factura.mapper.ProductMapper
 import com.CarlosZ.factura.model.Client
 import com.CarlosZ.factura.model.Product
 import com.CarlosZ.factura.repository.ProductRepository
@@ -22,6 +24,20 @@ class productService {
             .withIgnoreNullValues()
             .withMatcher(("description"), ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
         return productRepository.findAll(Example.of(product, matcher), pageable)
+    }
+
+    fun listDto(): List<ProductDto>{
+        val productList = productRepository.findAll()
+        ///crear la lista mutable vacia
+        ///map de productlist
+            //llamar mapDto
+            //agregar productDto a lista mutable
+        val productDtoList = mutableListOf<ProductDto>()
+        productList.map {product ->
+            val productDto = ProductMapper.mapToDto(product)
+            productDtoList.add(productDto)
+        }
+        return productDtoList
     }
 
     fun save(product: Product): Product{

@@ -18,4 +18,6 @@ interface InvoiceRepository: JpaRepository<Invoice, Long?> {
     @Query(nativeQuery = true)
     fun bigInvoice (value: Double): List <Invoice>
 
+
+
 }

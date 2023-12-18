@@ -1,5 +1,6 @@
 package com.CarlosZ.factura.controller
 
+import com.CarlosZ.factura.dto.ProductDto
 import com.CarlosZ.factura.model.Client
 import com.CarlosZ.factura.model.Product
 import com.CarlosZ.factura.service.productService
@@ -24,6 +25,9 @@ class ProductController {
         return ResponseEntity(response, HttpStatus.OK)
     }
 
+    fun listDto(): ResponseEntity<*>{
+        return ResponseEntity(productService.listDto(), HttpStatus.OK)
+    }
 
     @PostMapping
     fun save (@RequestBody product: Product):ResponseEntity<Product>{

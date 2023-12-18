@@ -19,32 +19,63 @@ class detailService {
     @Autowired
     lateinit var detailRepository: DetailRepository
 
-    fun list ():List<Detail>{
-        return detailRepository.findAll()
-    }
-
-    fun save(detail: Detail):Detail{
+    fun save(detail: Detail):Detail {
         try {
             invoiceRepository.findById(detail.invoiceId)
                 ?: throw Exception("Id de factura no encontrado")
             productRepository.findById(detail.productId)
                 ?: throw Exception("Id de producto no encontrado")
-            return detailRepository.save(detail)
-        }catch (ex : Exception){
-            throw ResponseStatusException(
-                HttpStatus.NOT_FOUND, ex.message, ex)
+
+            val response = detailRepository.save(detail)
+            val product = productRepository.findById(detail.productId)
+            product?.apply {
+                stock = stock?.minus(detail.quantity!!)
+            }
+            productRepository.save(product!!)
+//-------------------------------------------------------------------------------
+            val listDetail = detailRepository.findByInvoiceId(detail.invoiceId)
+
+            if (listDetail != null) {
+                var suma = 0.0
+
+                listDetail.forEach { element ->
+
+                    suma += element.price?.times (element.quantity!!)!!
+
+              }
+                val invoiceToUp = invoiceRepository.findById(detail.invoiceId)
+                invoiceToUp?.apply {
+                    total = suma.toDouble()
+                }
+                invoiceRepository.save(invoiceToUp!!)
+
+
+            }
+            return response
         }
+
+        catch(ex : Exception) {
+            throw ResponseStatusException(
+                    HttpStatus.NOT_FOUND, ex.message, ex
+                )
+            }
+        }
+//----------------------------------------------------------------------------------
+    fun list ():List<Detail>{
+        return detailRepository.findAll()
     }
 
     fun update(detail: Detail): Detail{
         try {
-            detailRepository.findById(detail.id)
-                ?: throw Exception("ID no existe")
-
-            return detailRepository.save(detail)
-        }
-        catch (ex:Exception){
-            throw ResponseStatusException(HttpStatus.NOT_FOUND,ex.message)
+            val response = detailRepository.save(detail)
+            val product = productRepository.findById(detail.productId)
+            product?.apply {
+                stock = stock?.plus(detail.quantity!!)
+            }
+            productRepository.save(product!!)
+            return response
+        } catch (ex: Exception) {
+            throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, ex.message)
         }
     }
 
@@ -52,6 +83,8 @@ class detailService {
         try{
             val response = detailRepository.findById(detail.id)
                 ?: throw Exception("ID no existe")
+
+
             response.apply {
                 quantity=detail.quantity
             }
@@ -68,9 +101,15 @@ class detailService {
 
     fun delete (id: Long?):Boolean?{
         try{
-            val response = detailRepository.findById(id)
-                ?: throw Exception("ID no existe")
+            val detail = detailRepository.findById(id)
+                ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "ID no existe")
+            val product = productRepository.findById(detail.productId)
+            product?.apply {
+                stock = stock?.plus(detail.quantity!!)
+            }
+            productRepository.save(product!!)
             detailRepository.deleteById(id!!)
+
             return true
         }
         catch (ex:Exception){
