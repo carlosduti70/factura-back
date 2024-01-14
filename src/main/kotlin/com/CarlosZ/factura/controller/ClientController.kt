@@ -1,7 +1,7 @@
 package com.CarlosZ.factura.controller
 
 import com.CarlosZ.factura.model.Client
-import com.CarlosZ.factura.service.clientService
+import com.CarlosZ.factura.service.ClientService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/client")
 class ClientController {
     @Autowired
-    lateinit var clientService: clientService
+    lateinit var clientService: ClientService
 
     @GetMapping
     fun list (client: Client, pageable:Pageable):ResponseEntity <*>{

@@ -3,7 +3,7 @@ package com.CarlosZ.factura.controller
 import com.CarlosZ.factura.dto.ProductDto
 import com.CarlosZ.factura.model.Client
 import com.CarlosZ.factura.model.Product
-import com.CarlosZ.factura.service.productService
+import com.CarlosZ.factura.service.ProductService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Example
 import org.springframework.data.domain.ExampleMatcher
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/product")
 class ProductController {
     @Autowired
-    lateinit var productService: productService
+    lateinit var productService: ProductService
 
     @GetMapping
     fun list (product: Product, pageable:Pageable):ResponseEntity <*>{

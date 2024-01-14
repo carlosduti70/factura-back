@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
 
 @Service
-class clientService {
+class ClientService {
     @Autowired
     lateinit var clientRepository: ClientRepository
 

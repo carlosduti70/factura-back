@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
 
 @Service
-class productService {
+class ProductService {
     @Autowired
     lateinit var productRepository: ProductRepository
 

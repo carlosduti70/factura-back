@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
 
 @Service
-class detailService {
+class DetailService {
     @Autowired
     lateinit var invoiceRepository: InvoiceRepository
     @Autowired

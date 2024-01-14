@@ -1,7 +1,7 @@
 package com.CarlosZ.factura.controller
 
 import com.CarlosZ.factura.model.Invoice
-import com.CarlosZ.factura.service.invoiceService
+import com.CarlosZ.factura.service.InvoiceService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/invoice")
 class InvoiceController {
     @Autowired
-    lateinit var invoiceService: invoiceService
+    lateinit var invoiceService: InvoiceService
 
     @GetMapping
     fun list ():List <Invoice>{
