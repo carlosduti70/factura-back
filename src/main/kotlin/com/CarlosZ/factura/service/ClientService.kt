@@ -25,6 +25,8 @@ class ClientService {
 
     fun save(client: Client): Client{
         try{
+            client.fullname?.takeIf { it.trim().isNotEmpty() }
+                ?:  throw  Exception("Nombres no deben ser nulos")
             return clientRepository.save(client)
         }
         catch (ex:Exception){
